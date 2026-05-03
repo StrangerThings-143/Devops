@@ -1,0 +1,14 @@
+name: Slack Message
+
+on: [push]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send message to Slack
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"🚀 Code pushed successfully!"}' \
+          ${{ secrets.SLACK_WEBHOOK }}
